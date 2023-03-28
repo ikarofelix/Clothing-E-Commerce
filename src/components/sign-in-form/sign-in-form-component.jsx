@@ -24,23 +24,23 @@ export const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (password.length < 6) {
       alert("Your password must be longer than 6 characters");
       return;
     }
     try {
-      await signInUserWithEmailAndPassword(email, password);
+      const { user } = await signInUserWithEmailAndPassword(email, password);
     } catch (error) {
-      if ((error.code = "auth/user-not-found")) {
+      if (error.code === "auth/user-not-found") {
         alert("This user was not found in our database");
-        console.log(error);
       }
+      console.log(error);
     }
   };
 
