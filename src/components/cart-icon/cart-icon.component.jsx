@@ -5,19 +5,7 @@ import { CartContext } from "../../contexts/cart.context";
 import "./cart-icon.styles.scss";
 
 const CartIcon = () => {
-  // const { cartItems } = useContext(CartContext);
   const { cartCount, isCartOpen, setIsCartOpen } = useContext(CartContext);
-
-  // const cartCount = () => {
-  //   let count = 0;
-  //   if (!cartItems) {
-  //     return count;
-  //   }
-  //   cartItems.map(({ quantity }) => {
-  //     count += quantity;
-  //   });
-  //   return count;
-  // };
 
   const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
 
