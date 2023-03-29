@@ -74,3 +74,33 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+
+// import shop_data from "../../shop-data.json";
+
+// export const ShopData2 = async () => {
+//   const shopDocRef = doc(db, "shop", "data");
+
+//   const snapshot = await getDoc(shopDocRef);
+//   try {
+//     await setDoc(shopDocRef, { shop_data });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// ShopData2();
+
+// return a._document.data.value.mapValue.fields.shop_data.arrayValue.values;
+
+// createShopData();
+
+export const ShopData = async () => {
+  const shopDocRef = doc(db, "shop", "data");
+
+  const shopSnapshot = await getDoc(shopDocRef);
+
+  // Returns the array ready
+  const firstList = shopSnapshot._document.data.value.mapValue.fields.shop_data.arrayValue.values;
+
+  return firstList.map((item) => item.mapValue.fields);
+};
