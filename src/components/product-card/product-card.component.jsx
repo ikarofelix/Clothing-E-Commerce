@@ -2,24 +2,13 @@ import "./product-card.styles.scss";
 import { Button } from "../button/button.component";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
+import { CartProvider } from "../../contexts/cart.context";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
+  const { addItemToCart } = useContext(CartContext);
 
-  // const { currentCart, setCurrentCart } = useContext(CartContext);
-  // console.log(currentCart);
-
-  const addToCart = () => {
-    //   if (
-    //     currentCart.filter((product) => {
-    //       product = { ...product, amount: 0 };
-    //       // product.amount++;
-    //       console.log(product.amount);
-    //     })
-    //   )
-    //     setCurrentCart([...currentCart, product]);
-    // };
-  };
+  const addProductToCart = () => addItemToCart(product);
 
   return (
     <div className="product-card-container">
@@ -28,7 +17,7 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonType="inverted" type="button">
+      <Button onClick={addProductToCart} buttonType="inverted" type="button">
         Add to card
       </Button>
     </div>
