@@ -4,14 +4,10 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.util";
-import { FormInput } from "../form-input/form-component";
-import { Button } from "../button/button.component";
+import FormInput from "../form-input/form-input-component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
-import "./sign-up-form.styles.scss";
-
-// See if passwords matches
-// Authenticate the user with that password
-// Create a user document from what createAuthUserWithEmailAndPassword returns
+import { SignUpContainer, SubTitle } from "./sign-up-form.styles.jsx";
 
 const defaultFormFields = {
   displayName: "",
@@ -20,7 +16,7 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-export const SignUpForm = () => {
+const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -54,8 +50,8 @@ export const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
+    <SignUpContainer>
+      <SubTitle>Don't have an account?</SubTitle>
       <span>Sign up now</span>
       <form onSubmit={handleSubmit} action="/">
         <FormInput
@@ -97,10 +93,12 @@ export const SignUpForm = () => {
           value={confirmPassword}
         />
 
-        <Button buttonType="default" type="submit">
+        <Button buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
           Sign Up
         </Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
+
+export default SignUpForm;

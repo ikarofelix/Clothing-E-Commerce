@@ -1,4 +1,4 @@
-import "./navigation.styles.scss";
+import { NavigationContainer, LogoContainer, NavLinks, NavLink } from "./navigation.styles.jsx";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 
 import { Fragment, useContext } from "react";
@@ -19,28 +19,23 @@ const NavigationBar = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
-          {/* <img src={CrownLogo} className="logo" /> */}
+      <NavigationContainer>
+        <LogoContainer to="/">
           <CrownLogo className="Logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            Shop
-          </Link>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to="/shop">Shop</NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutUser}>
               Sign Out
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/auth">
-              Sign In
-            </Link>
+            <NavLink to="/auth">Sign In</NavLink>
           )}
-          <CartIcon className="nav-link" />
-        </div>
+          <NavLink as={CartIcon} />
+        </NavLinks>
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );

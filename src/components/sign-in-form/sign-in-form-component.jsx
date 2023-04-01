@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FormInput } from "../form-input/form-component";
-import "./sign-in-form.styles.scss";
-import { Button } from "../button/button.component";
+import FormInput from "../form-input/form-input-component";
+import { SignInContainer, SubTitle, ButtonsContainer } from "./sign-in-form.styles.jsx";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import {
   signInWithGooglePopup,
@@ -13,7 +13,7 @@ const defaultSignInFormFields = {
   password: "",
 };
 
-export const SignInForm = () => {
+const SignInForm = () => {
   const [SignInFormFields, setSignInFormFields] = useState(defaultSignInFormFields);
   const { email, password } = SignInFormFields;
 
@@ -44,8 +44,8 @@ export const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <SubTitle>I already have an account</SubTitle>
       <p>Sign in with your email and password</p>
       <form onSubmit={handleSubmit} action="/">
         <FormInput
@@ -64,15 +64,17 @@ export const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className="buttons-container">
-          <Button buttonType="inverted" type="submit">
+        <ButtonsContainer>
+          <Button buttonType={BUTTON_TYPE_CLASSES.inverted} type="submit">
             Sign In
           </Button>
-          <Button buttonType="google" onClick={signInWithGoogle} type="button">
+          <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} type="button">
             Google Sign In
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
+
+export default SignInForm;
