@@ -1,5 +1,1 @@
-# Redirect from /old-path to /new-path
-/old-path    /new-path    301
-
-# Redirect from /about to /about-us
-/about       /about-us   302
+/* ../index.html 200
