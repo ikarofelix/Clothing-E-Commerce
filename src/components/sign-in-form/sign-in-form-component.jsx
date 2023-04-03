@@ -63,6 +63,7 @@ const SignInForm = () => {
           onChange={handleChange}
           name="password"
           value={password}
+          autoComplete="password"
         />
         <ButtonsContainer>
           <Button buttonType={BUTTON_TYPE_CLASSES.inverted} type="submit">
