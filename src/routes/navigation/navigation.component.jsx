@@ -1,27 +1,31 @@
 import { NavigationContainer, LogoContainer, NavLinks, NavLink } from "./navigation.styles.jsx";
-import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../../store/user/user.selector.js";
-
 import { signOutUser } from "../../utils/firebase/firebase.util";
-import { CartContext } from "../../contexts/cart.context";
+
+import { selectCurrentUser } from "../../store/user/user.selector.js";
+import { selectCartIsOpen } from "../../store/cart/cart.selector.js";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 const NavigationBar = () => {
   const currentUser = useSelector(selectCurrentUser);
-  const { isCartOpen } = useContext(CartContext);
+  const isCartOpen = useSelector(selectCartIsOpen);
 
   return (
     <Fragment>
       <NavigationContainer>
         <LogoContainer to="/">
-          <CrownLogo className="Logo" />
+          <img
+            src="../../../src/assets/crown.svg"
+            height="40px"
+            width="40px"
+            alt="Crown Clothing Logo"
+          />
         </LogoContainer>
         <NavLinks>
           <NavLink to="/shop">Shop</NavLink>
