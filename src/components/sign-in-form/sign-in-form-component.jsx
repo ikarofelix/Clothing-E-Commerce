@@ -3,44 +3,37 @@ import FormInput from "../form-input/form-input-component";
 import { SignInContainer, SubTitle, ButtonsContainer } from "./sign-in-form.styles.jsx";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
-import {
-  signInWithGooglePopup,
-  signInUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.util";
-
 const defaultSignInFormFields = {
   email: "",
   password: "",
 };
 
+import { useDispatch } from "react-redux";
+import { emailSignInStart, googleSignInStart } from "../../store/user/user.action";
+
 const SignInForm = () => {
   const [SignInFormFields, setSignInFormFields] = useState(defaultSignInFormFields);
   const { email, password } = SignInFormFields;
+
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setSignInFormFields({ ...SignInFormFields, [name]: value });
   };
 
-  const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+  const signInWithGoogle = () => {
+    dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     if (password.length < 6) {
-      alert("Your password must be longer than 6 characters");
-      return;
+      return alert("Your password must be longer than 6 characters");
     }
-    try {
-      const { user } = await signInUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      if (error.code === "auth/user-not-found") {
-        alert("This user was not found in our database");
-      }
-      console.log(error);
-    }
+
+    dispatch(emailSignInStart(email, password));
   };
 
   return (
