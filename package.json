@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.52.1",
+    "dotenv": "^16.0.3",
     "firebase": "^9.18.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -24,6 +27,7 @@
     "reselect": "^4.1.8",
     "sass": "^1.60.0",
     "sort-by": "^0.0.2",
+    "stripe": "^12.3.0",
     "styled-components": "^5.3.9",
     "vite-plugin-svgr": "^0.0.1"
   },
