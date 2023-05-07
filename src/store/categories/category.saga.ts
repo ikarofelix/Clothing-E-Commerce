@@ -20,3 +20,15 @@ export function* onFetchCategories() {
 export function* categoriesSaga() {
   yield all([call(onFetchCategories)]);
 }
+
+type Alien = {
+  fly: () => {};
+};
+
+type Human = {
+  speak: () => {};
+};
+
+function isHuman(entity: Human | Alien): entity is Human {
+  return (entity as Human).speak != undefined;
+}
