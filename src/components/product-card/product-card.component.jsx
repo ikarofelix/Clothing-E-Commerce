@@ -1,11 +1,11 @@
-import { ProductCartContainer, Footer, Name, Price } from "./product-card.styles.jsx";
+import { ProductCartContainer, Footer, Name, Price } from "./product-card.styles";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { selectCartItems } from "../../store/cart/cart.selector.js";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
-import { addItemToCart } from "../../store/cart/cart.action.js";
+import { addItemToCart } from "../../store/cart/cart.action";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;

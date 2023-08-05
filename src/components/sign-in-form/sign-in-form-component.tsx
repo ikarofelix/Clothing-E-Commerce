@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import FormInput from "../form-input/form-input-component";
-import { SignInContainer, SubTitle, ButtonsContainer } from "./sign-in-form.styles.jsx";
+import { SignInContainer, SubTitle, ButtonsContainer } from "./sign-in-form.styles";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 const defaultSignInFormFields = {
@@ -17,7 +17,7 @@ const SignInForm = () => {
 
   const dispatch = useDispatch();
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setSignInFormFields({ ...SignInFormFields, [name]: value });
   };
@@ -26,7 +26,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password.length < 6) {

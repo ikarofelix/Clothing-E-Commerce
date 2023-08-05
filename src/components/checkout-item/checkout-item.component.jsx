@@ -8,15 +8,11 @@ import {
   Arrow,
   Value,
   RemoveButton,
-} from "./checkout-item.styles.jsx";
+} from "./checkout-item.styles";
 
-import {
-  clearItemFromCart,
-  addItemToCart,
-  removeItemToCart,
-} from "../../store/cart/cart.action.js";
+import { clearItemFromCart, addItemToCart, removeItemToCart } from "../../store/cart/cart.action";
 
-import { selectCartItems } from "../../store/cart/cart.selector.js";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
