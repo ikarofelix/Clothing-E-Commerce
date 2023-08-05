@@ -6,7 +6,7 @@ import { selectCartCount, selectCartIsOpen } from "../../store/cart/cart.selecto
 
 import { setIsCartOpen } from "../../store/cart/cart.action";
 
-import { ShoppingBagIcon } from "../../assets/shopping-bag";
+import ShoppingBagIcon from "../../assets/shopping-bag.svg";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const CartIcon = () => {
   return (
     <CartIconContainer onClick={toggleIsCartOpen}>
       <ShoppingIconContainer>
-        <ShoppingBagIcon />
+        <img src={ShoppingBagIcon} height="25px" width="25px" alt="Shopping Bag" />
       </ShoppingIconContainer>
       <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
