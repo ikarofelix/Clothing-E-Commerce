@@ -2,6 +2,10 @@
 
 Clothing E-Commerce é um repositório criado para fins de estudo em conjunto com o curso [Complete React Developer in 2023 (w/ Redux, Hooks, GraphQL)](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/). Ele contém o código e recursos utilizados para aprender diversos conceitos e tecnologias abordadas no curso. Este README fornece uma visão geral do projeto, seus objetivos e como configurá-lo em sua máquina local.
 
+<div align="center">
+<img src="docs/Clothing E-Commerce GIF.gif" alt="Gif de como usar o site" />
+</div>
+
 ## Funcionalidades
 
 - Catálogo de Produtos: O site apresenta um catálogo de produtos organizados por categorias, permitindo aos usuários navegar facilmente pelos itens disponíveis.
@@ -22,6 +26,7 @@ O projeto utiliza as seguintes tecnologias e ferramentas:
 > - TypeScript
 > - Vite
 > - React
+> - React Router
 > - Redux
 > - Redux Saga
 > - Redux Persist
